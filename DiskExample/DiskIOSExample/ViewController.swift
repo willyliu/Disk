@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     @IBAction func getTapped(_ sender: Any) {
         // Be sure to check out the comments in the networking function below
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        getPostsFromWeb { (posts) in
+        getPostsFromWeb { posts in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             print("Posts retrieved from network request successfully!")
             self.posts = posts

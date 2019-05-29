@@ -11,7 +11,6 @@ import Foundation
 import Disk
 
 class InterfaceController: WKInterfaceController {
-
     
     // MARK: Properties
     
@@ -35,7 +34,7 @@ class InterfaceController: WKInterfaceController {
     // MARK: IBActions
     
     @IBAction func getJSONFromWeb() {
-        getPostsFromWeb { (posts) in
+        getPostsFromWeb { posts in
             print("Posts retrieved from network request successfully!")
             self.posts = posts
         }

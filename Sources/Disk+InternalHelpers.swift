@@ -36,30 +36,12 @@ extension Disk {
         }
         var searchPathDirectory: FileManager.SearchPathDirectory
         switch directory {
+        #if os(tvOS)
+        #else
         case .documents:
             searchPathDirectory = .documentDirectory
-        case .caches:
-            searchPathDirectory = .cachesDirectory
         case .applicationSupport:
             searchPathDirectory = .applicationSupportDirectory
-        case .temporary:
-            if var url = URL(string: NSTemporaryDirectory()) {
-                if let validPath = validPath {
-                    url = url.appendingPathComponent(validPath, isDirectory: false)
-                }
-                if url.absoluteString.lowercased().prefix(filePrefix.count) != filePrefix {
-                    let fixedUrlString = filePrefix + url.absoluteString
-                    url = URL(string: fixedUrlString)!
-                }
-                return url
-            } else {
-                throw createError(
-                    .couldNotAccessTemporaryDirectory,
-                    description: "Could not create URL for \(directory.pathDescription)/\(validPath ?? "")",
-                    failureReason: "Could not get access to the application's temporary directory.",
-                    recoverySuggestion: "Use a different directory."
-                )
-            }
         case .sharedContainer(let appGroupName):
             if var url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupName) {
                 if let validPath = validPath {
@@ -76,6 +58,27 @@ extension Disk {
                     description: "Could not create URL for \(directory.pathDescription)/\(validPath ?? "")",
                     failureReason: "Could not get access to shared container with app group named \(appGroupName).",
                     recoverySuggestion: "Check that the app-group name in the entitlement matches the string provided."
+                )
+            }
+        #endif
+        case .caches:
+            searchPathDirectory = .cachesDirectory
+        case .temporary:
+            if var url = URL(string: NSTemporaryDirectory()) {
+                if let validPath = validPath {
+                    url = url.appendingPathComponent(validPath, isDirectory: false)
+                }
+                if url.absoluteString.lowercased().prefix(filePrefix.count) != filePrefix {
+                    let fixedUrlString = filePrefix + url.absoluteString
+                    url = URL(string: fixedUrlString)!
+                }
+                return url
+            } else {
+                throw createError(
+                    .couldNotAccessTemporaryDirectory,
+                    description: "Could not create URL for \(directory.pathDescription)/\(validPath ?? "")",
+                    failureReason: "Could not get access to the application's temporary directory.",
+                    recoverySuggestion: "Use a different directory."
                 )
             }
         }

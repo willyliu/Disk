@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     
     @IBAction func getJSONFromWeb(_ sender: Any) {
         // Be sure to check out the comments in the networking function below
-        getPostsFromWeb { (posts) in
+        getPostsFromWeb { posts in
             print("Posts retrieved from network request successfully!")
             self.posts = posts
         }
@@ -36,7 +36,7 @@ class ViewController: UIViewController {
     @IBAction func saveJSONToDisk(_ sender: Any) {
         // Disk is thorough when it comes to error handling, so make sure you understand why an error occurs when it does.
         do {
-            try Disk.save(self.posts, to: .documents, as: "posts.json")
+            try Disk.save(self.posts, to: .caches, as: "posts.json")
         } catch let error as NSError {
             fatalError("""
                 Domain: \(error.domain)
@@ -60,7 +60,7 @@ class ViewController: UIViewController {
         
         // If you want to save new data to a file location, you can treat the file as an array and simply append to it as well.
         let newPost = Post(userId: 0, id: self.posts.count + 1, title: "Appended Post", body: "...")
-        try? Disk.append(newPost, to: "posts.json", in: .documents)
+        try? Disk.append(newPost, to: "posts.json", in: .caches)
         
         print("Saved posts to disk!")
     }
@@ -69,7 +69,7 @@ class ViewController: UIViewController {
         // We'll keep things simple here by using try?, but it's good practice to handle Disk with do, catch, try blocks
         // so you can make sure everything is going according to plan.
         do {
-            let retrievedPosts = try Disk.retrieve("posts.json", from: .documents, as: [Post].self)
+            let retrievedPosts = try Disk.retrieve("posts.json", from: .caches, as: [Post].self)
             // If you Option+Click 'retrievedPosts' above, you'll notice that its type is [Post]
             // Pretty neat, huh?
             
