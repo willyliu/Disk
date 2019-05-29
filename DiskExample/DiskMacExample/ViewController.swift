@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Disk
 
 class ViewController: NSViewController {
 
@@ -22,6 +23,18 @@ class ViewController: NSViewController {
         }
     }
 
-
+    @IBAction func getJSONFromWeb(_ sender: Any) {
+    
+    }
+    
+    @IBAction func saveJSONToDisk(_ sender: Any) {
+    
+    }
+    
+    @IBAction func retrieveJSONFromDisk(_ sender: Any) {
+        
+    }
+    
+    
 }
 
