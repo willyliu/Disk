@@ -48,7 +48,7 @@ public class Disk {
         /// Files in this directory are automatically backed up by iCloud. To disable this feature for a specific file, use the .doNotBackup(:in:) method.
         case applicationSupport
         
-        /// Data that is used only temporarily should be stored in the <Application_Home>/tmp directory. Although these files are not backed up to iCloud, remember to delete those files when you are done with them so that they do not continue to consume space on the user’s device.
+        /// Data that is used only temporarily should be stored in the <Application_Home>/tmp directory. Although these files are not backed up to iCloud, remember to delete those files when you are done with them so that they do not continue to consume space on the user's device.
         /// The system will periodically purge these files when your app is not running; therefore, you cannot rely on these files persisting after your app terminates.
         case temporary
         
@@ -66,7 +66,7 @@ public class Disk {
             case .sharedContainer(let appGroupName): return "\(appGroupName)"
             }
         }
-     
+        
         static public func ==(lhs: Directory, rhs: Directory) -> Bool {
             switch (lhs, rhs) {
             case (.documents, .documents), (.caches, .caches), (.applicationSupport, .applicationSupport), (.temporary, .temporary):
@@ -77,6 +77,6 @@ public class Disk {
                 return false
             }
         }
-     
+        
     }
 }
