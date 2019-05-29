@@ -38,6 +38,7 @@
 		D716BC13229E8B8600B8E759 /* GetPosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D716BC0D229E8B8600B8E759 /* GetPosts.swift */; };
 		D716BC14229E8B8600B8E759 /* GetPosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D716BC0D229E8B8600B8E759 /* GetPosts.swift */; };
 		D716BC15229E8B8600B8E759 /* GetPosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D716BC0D229E8B8600B8E759 /* GetPosts.swift */; };
+		D716BC19229EBE4A00B8E759 /* Disk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D716BC18229EBE4A00B8E759 /* Disk.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,8 @@
 		D716BBF4229E727B00B8E759 /* DiskMacExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DiskMacExample.entitlements; sourceTree = "<group>"; };
 		D716BC0C229E8B8600B8E759 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		D716BC0D229E8B8600B8E759 /* GetPosts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPosts.swift; sourceTree = "<group>"; };
+		D716BC16229EBC9D00B8E759 /* Disk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Disk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D716BC18229EBE4A00B8E759 /* Disk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Disk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D716BC19229EBE4A00B8E759 /* Disk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +209,8 @@
 		43A00271DAED0D8D01836231 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D716BC18229EBE4A00B8E759 /* Disk.framework */,
+				D716BC16229EBC9D00B8E759 /* Disk.framework */,
 				109254301F25C65100A93A13 /* Disk.framework */,
 			);
 			name = Frameworks;
@@ -387,6 +393,11 @@
 					D716BBE7229E727A00B8E759 = {
 						CreatedOnToolsVersion = 10.2.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
