@@ -51,14 +51,14 @@ end
 * <a href="https://github.com/Carthage/Carthage" target="_blank">Carthage</a>:
 
  ```ruby
- github "saoudrizwan/Disk"
+ github "willyliu/Disk"
  ```
 
 * <a href="https://github.com/apple/swift-package-manager" target="_blank">Swift Package Manager</a>:
 
 ```
 dependencies: [
-    .Package(url: "https://github.com/saoudrizwan/Disk.git", "0.6.3")
+    .Package(url: "https://github.com/willyliu/Disk.git", "0.6.4")
 ]
 ```
 
